@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="picker-calendar">
-        <div [hidden]="type !== 1" class="date">
+        <div [class.hidden]="type !== 1" class="date">
             <div class="picker-calendar-row">
                 <span class="picker-weekday" *ngFor="let day of dayNames">{{ day }}</span>
             </div>
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div [hidden]="type !== 2" class="month">
+        <div [class.hidden]="type !== 2" class="month">
             <div class="picker-calendar-row">
                 <span class="picker-month"
                       *ngFor="let month of monthList"
@@ -44,7 +44,7 @@
                 </span>
             </div>
         </div>
-        <div [hidden]="type !== 3" class="year">
+        <div [class.hidden]="type !== 3" class="year">
             <div class="picker-calendar-row">
                 <span class="arrow-left" (click)="generateYearList('prev')"></span>
                 <span class="picker-year"
@@ -62,12 +62,12 @@
             <span class="today-icon" [ngStyle]="{'border-top-color': todayIconColor}"></span>
             <span class="text">{{ 'today' | translate }}</span>
         </div>
-        <div class="picker-action action-close" (click)="cancelDialog()" [hidden]="mode === 'inline'"><span
+        <div class="picker-action action-close" (click)="cancelDialog()" [class.hidden]="mode === 'inline'"><span
                 class="text">{{ 'close' | translate }}</span>
         </div>
         <div class="picker-action action-confirm"
              pickerBtnHighlight
-             (click)="confirm()" [hidden]="mode === 'inline' || mode === 'dropdown'"><span class="text">{{ 'confirm' | translate }}</span>
+             (click)="confirm()" [class.hidden]="mode === 'inline' || mode === 'dropdown'"><span class="text">{{ 'confirm' | translate }}</span>
         </div>
     </div>
 </div>
