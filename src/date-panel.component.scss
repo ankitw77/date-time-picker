@@ -244,7 +244,8 @@
     height: $base-line-height * 2;
     font-weight: 700;
     color: #999;
-    width: calc(100% / 7);
+    width: calc(98% / 7);
+    //changed 100% to 98% IE edge fix
   }
 
   .picker-day {
@@ -264,7 +265,8 @@
     align-items: center;
     position: relative;
     height: $base-line-height * 2;
-    width: calc(100% / 7);
+    width: calc(98% / 7);
+     //changed 100% to 98% IE edge fix
 
     &.picker-show {
       cursor: pointer;
