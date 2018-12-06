@@ -29,6 +29,7 @@ export class DialogComponent implements OnInit, OnDestroy {
     public returnObject: string;
     public dialogType: DialogType;
     public pickerType: 'both' | 'date' | 'time';
+    public autoCloseOnDateSelect : boolean;
 
     private subId: Subscription;
     private momentFunc = (moment as any).default ? (moment as any).default : moment;
@@ -86,10 +87,12 @@ export class DialogComponent implements OnInit, OnDestroy {
                       dtPosition: 'top' | 'right' | 'bottom' | 'left',
                       dtPositionOffset: string, dtMode: 'popup' | 'dropdown' | 'inline',
                       dtHourTime: '12' | '24', dtTheme: string,
-                      dtPickerType: 'both' | 'date' | 'time', dtShowSeconds: boolean, dtOnlyCurrent: boolean ): void {
+                      dtPickerType: 'both' | 'date' | 'time', dtShowSeconds: boolean, dtOnlyCurrent: boolean,
+                      autoCloseOnDateSelect : boolean ): void {
         this.directiveInstance = instance;
         this.directiveElementRef = elementRef;
         this.initialValue = initialValue;
+        this.autoCloseOnDateSelect = autoCloseOnDateSelect;
 
         this.service.setPickerOptions(dtLocale, dtViewFormat, dtReturnObject, dtPosition,
             dtPositionOffset, dtMode, dtHourTime, dtTheme, dtPickerType, dtShowSeconds, dtOnlyCurrent);
@@ -114,7 +117,7 @@ export class DialogComponent implements OnInit, OnDestroy {
 
     public setDate( moment: Moment ): void {
         this.service.setDate(moment);
-        this.confirm(false);
+        this.confirm(!!this.autoCloseOnDateSelect);
     }
 
     public setTime( time: { hour: number, min: number, sec: number, meridian: string } ): void {
